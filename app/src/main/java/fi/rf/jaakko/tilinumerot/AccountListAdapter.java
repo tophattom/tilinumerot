@@ -95,7 +95,13 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
 
                             Toast.makeText(context, "Tilinumero kopioitu leikepöydälle", Toast.LENGTH_SHORT).show();
                         } else if (which == 1) {
+                            Intent sendIntent = new Intent();
+                            sendIntent.setAction(Intent.ACTION_SEND);
+                            sendIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            sendIntent.putExtra(Intent.EXTRA_TEXT, people.get(position).getAccount());
+                            sendIntent.setType("text/plain");
 
+                            context.startActivity(sendIntent);
                         }
                     }
                 });
