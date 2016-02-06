@@ -35,7 +35,7 @@ public class ListActivity extends AppCompatActivity {
         dataset.add(new Person("Jaakko Rinta-Filppula", "FI17 8000 2331 5587 09"));
         dataset.add(new Person("Matti Meikäläinen", "FI34 2000 3949 09090 15"));
 
-        final AccountListAdapter mainAdapter = new AccountListAdapter(dataset);
+        final AccountListAdapter mainAdapter = new AccountListAdapter(getApplicationContext(), dataset);
 
         mainRecyclerView.setAdapter(mainAdapter);
 
