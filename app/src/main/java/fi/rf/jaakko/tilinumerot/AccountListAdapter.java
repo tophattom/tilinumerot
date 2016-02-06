@@ -2,6 +2,8 @@ package fi.rf.jaakko.tilinumerot;
 
 import android.app.AlertDialog;
 import android.app.DialogFragment;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -80,13 +82,17 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
 
         holder.setClickListener(new ItemClickListener() {
             @Override
-            public void onClick(View view, int position) {
+            public void onClick(View view, final int position) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
 
                 builder.setItems(R.array.actions, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (which == 0) {
+                            ClipboardManager cm = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                            ClipData clip = ClipData.newPlainText("Tilinumero", people.get(position).getAccount());
+                            cm.setPrimaryClip(clip);
+
                             Toast.makeText(context, "Tilinumero kopioitu leikepöydälle", Toast.LENGTH_SHORT).show();
                         } else if (which == 1) {
 
