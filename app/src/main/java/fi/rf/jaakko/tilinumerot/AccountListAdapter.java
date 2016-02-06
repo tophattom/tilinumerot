@@ -15,11 +15,14 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
     private ArrayList<Person> people;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public View view;
+        public TextView nameView;
+        public TextView accountView;
 
-        public ViewHolder(View v) {
-            super(v);
-            this.view = v;
+        public ViewHolder(View personView) {
+            super(personView);
+
+            this.nameView = (TextView) personView.findViewById(R.id.person_list_item_name);
+            this.accountView = (TextView) personView.findViewById(R.id.person_list_item_account);
         }
     }
 
@@ -31,6 +34,10 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
         this.people.add(person);
 
         this.notifyDataSetChanged();
+    }
+
+    public Person getPerson(int position) {
+        return people.get(position);
     }
 
     @Override
@@ -46,11 +53,8 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
     public void onBindViewHolder(ViewHolder holder, int position) {
         Person person = people.get(position);
 
-        TextView nameView = (TextView) holder.view.findViewById(R.id.person_list_item_name);
-        TextView accountView = (TextView) holder.view.findViewById(R.id.person_list_item_account);
-
-        nameView.setText(person.getName());
-        accountView.setText(person.getAccount());
+        holder.nameView.setText(person.getName());
+        holder.accountView.setText(person.getAccount());
     }
 
     @Override
