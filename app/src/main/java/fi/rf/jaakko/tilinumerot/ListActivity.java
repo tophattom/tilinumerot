@@ -31,9 +31,9 @@ public class ListActivity extends AppCompatActivity {
         LinearLayoutManager mainLayoutManager = new LinearLayoutManager(this);
         mainRecyclerView.setLayoutManager(mainLayoutManager);
 
-        ArrayList<String> dataset = new ArrayList<>();
-        dataset.add("Matti Meikäläinen");
-        dataset.add("asdasd asd asdas");
+        ArrayList<Person> dataset = new ArrayList<>();
+        dataset.add(new Person("Jaakko Rinta-Filppula", "FI17 8000 2331 5587 09"));
+        dataset.add(new Person("Matti Meikäläinen", "FI34 2000 3949 09090 15"));
 
         final AccountListAdapter mainAdapter = new AccountListAdapter(dataset);
 
@@ -43,7 +43,7 @@ public class ListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainAdapter.addPerson("Lorem Ipsum");
+                mainAdapter.addPerson(new Person("Jaakko Rinta-Filppula", "FI17 8000 2331 5587 09"));
             }
         });
     }
