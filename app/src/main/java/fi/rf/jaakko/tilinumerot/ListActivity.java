@@ -1,6 +1,7 @@
 package fi.rf.jaakko.tilinumerot;
 
 import android.accounts.Account;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -43,7 +44,9 @@ public class ListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mainAdapter.addPerson(new Person("Jaakko Rinta-Filppula", "FI17 8000 2331 5587 09"));
+//                mainAdapter.addPerson(new Person("Jaakko Rinta-Filppula", "FI17 8000 2331 5587 09"));
+                Intent i = new Intent(view.getContext(), AddPersonActivity.class);
+                startActivityForResult(i, 1337);
             }
         });
     }

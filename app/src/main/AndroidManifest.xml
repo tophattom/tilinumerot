@@ -18,6 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".AddPersonActivity"
+            android:label="@string/title_activity_add_person"
+            android:parentActivityName=".ListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="fi.rf.jaakko.tilinumerot.ListActivity" />
+        </activity>
     </application>
 
 </manifest>
