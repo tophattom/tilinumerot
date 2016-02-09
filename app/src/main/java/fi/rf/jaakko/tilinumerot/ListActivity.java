@@ -18,6 +18,8 @@ import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
 
+    private AccountListAdapter mainAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +38,7 @@ public class ListActivity extends AppCompatActivity {
         dataset.add(new Person("Jaakko Rinta-Filppula", "FI17 8000 2331 5587 09"));
         dataset.add(new Person("Matti Meikäläinen", "FI34 2000 3949 09090 15"));
 
-        final AccountListAdapter mainAdapter = new AccountListAdapter(getApplicationContext(), dataset);
+        mainAdapter = new AccountListAdapter(getApplicationContext(), dataset);
 
         mainRecyclerView.setAdapter(mainAdapter);
 
@@ -56,6 +58,18 @@ public class ListActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_list, menu);
         return true;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1337) {
+            if (resultCode == RESULT_OK) {
+                Person newPerson = data.getExtras().getParcelable("person");
+
+                mainAdapter.addPerson(newPerson);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override

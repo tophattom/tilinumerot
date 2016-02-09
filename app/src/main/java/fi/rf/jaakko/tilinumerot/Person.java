@@ -1,9 +1,14 @@
 package fi.rf.jaakko.tilinumerot;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
+
 /**
  * Created by jaakko on 6.2.2016.
  */
-public class Person {
+public class Person implements Parcelable {
     private String name;
     private String account;
 
@@ -14,6 +19,14 @@ public class Person {
     public Person(String name, String account) {
         this.name = name;
         this.account = account;
+    }
+
+    public Person(Parcel in) {
+        String[] data = new String[2];
+        in.readStringArray(data);
+
+        this.name = data[0];
+        this.account = data[1];
     }
 
     public String getName() {
@@ -40,4 +53,26 @@ public class Person {
     private static boolean validAccount(String account) {
         return true;
     }
+
+    @Override
+    public int describeContents() {
+        return (this.name + this.account).hashCode();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        String[] data = {name, account};
+        dest.writeStringArray(data);
+    }
+
+    public static final Parcelable.Creator<Person> CREATOR
+            = new Parcelable.Creator<Person>() {
+        public Person createFromParcel(Parcel in) {
+            return new Person(in);
+        }
+
+        public Person[] newArray(int size) {
+            return new Person[size];
+        }
+    };
 }
