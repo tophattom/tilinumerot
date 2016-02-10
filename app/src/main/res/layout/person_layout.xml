@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:minHeight="72dp"
     android:clickable="true"
-    android:background="?android:attr/selectableItemBackground">
+    android:background="@drawable/people_list_item">
 
     <ImageView
         android:id="@+id/person_list_item_icon"

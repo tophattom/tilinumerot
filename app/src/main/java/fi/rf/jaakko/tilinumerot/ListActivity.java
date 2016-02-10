@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.ActionMode;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,7 +35,7 @@ public class ListActivity extends AppCompatActivity {
         LinearLayoutManager mainLayoutManager = new LinearLayoutManager(this);
         mainRecyclerView.setLayoutManager(mainLayoutManager);
 
-        mainAdapter = new AccountListAdapter(getApplicationContext());
+        mainAdapter = new AccountListAdapter(getApplicationContext(), this);
 
         mainRecyclerView.setAdapter(mainAdapter);
 
