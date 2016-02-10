@@ -99,6 +99,9 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
             selectedItems.put(position, true);
         }
 
+        String title = activity.getString(R.string.selected_count, selectedItems.size());
+        actionMode.setTitle(title);
+
         notifyItemChanged(position);
     }
 

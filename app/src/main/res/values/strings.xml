@@ -4,4 +4,5 @@
     <string name="title_activity_add_person">Lisää henkilö</string>
 
     <string name="save_filename">tilinumerot</string>
+    <string name="selected_count">%1$s valittu</string>
 </resources>
