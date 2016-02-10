@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by jaakko on 6.2.2016.
  */
-public class Person implements Parcelable {
+public class Person implements Parcelable, Comparable<Person> {
     private String name;
     private String account;
 
@@ -75,4 +75,14 @@ public class Person implements Parcelable {
             return new Person[size];
         }
     };
+
+    @Override
+    public int compareTo(Person another) {
+        return this.name.compareTo(another.name);
+    }
+
+    @Override
+    public String toString() {
+        return this.name + ";" + this.account;
+    }
 }

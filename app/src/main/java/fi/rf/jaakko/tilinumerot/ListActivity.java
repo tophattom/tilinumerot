@@ -34,11 +34,7 @@ public class ListActivity extends AppCompatActivity {
         LinearLayoutManager mainLayoutManager = new LinearLayoutManager(this);
         mainRecyclerView.setLayoutManager(mainLayoutManager);
 
-        ArrayList<Person> dataset = new ArrayList<>();
-        dataset.add(new Person("Jaakko Rinta-Filppula", "FI17 8000 2331 5587 09"));
-        dataset.add(new Person("Matti Meikäläinen", "FI34 2000 3949 09090 15"));
-
-        mainAdapter = new AccountListAdapter(getApplicationContext(), dataset);
+        mainAdapter = new AccountListAdapter(getApplicationContext());
 
         mainRecyclerView.setAdapter(mainAdapter);
 

@@ -2,4 +2,6 @@
     <string name="app_name">Tilinumerot</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_add_person">Lisää henkilö</string>
+
+    <string name="save_filename">tilinumerot</string>
 </resources>

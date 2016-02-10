@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<Person> people;
+    private PeopleStorage people;
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView nameView;
@@ -49,9 +49,11 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
         }
     }
 
-    public AccountListAdapter(Context context, ArrayList<Person> people) {
+    public AccountListAdapter(Context context) {
         this.context = context;
-        this.people = people;
+
+        String filename = context.getResources().getString(R.string.save_filename);
+        this.people = new PeopleStorage(context, filename);
     }
 
     public void addPerson(Person person) {
