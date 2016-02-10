@@ -60,6 +60,12 @@ public class PeopleStorage {
         return this.people.get(i);
     }
 
+    public void remove(int i) {
+        this.people.remove(i);
+
+        saveData();
+    }
+
     public int size() {
         return this.people.size();
     }

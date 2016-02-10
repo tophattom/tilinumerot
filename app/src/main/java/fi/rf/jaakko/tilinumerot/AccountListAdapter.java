@@ -111,11 +111,11 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
         return selectedItems.size();
     }
 
-    public List<Person> getSelectedItems() {
-        List<Person> items = new ArrayList<>(selectedItems.size());
+    public List<Integer> getSelectedItemPositions() {
+        List<Integer> items = new ArrayList<>(selectedItems.size());
 
         for (int i = 0; i < selectedItems.size(); i++) {
-            items.add(people.get(selectedItems.keyAt(i)));
+            items.add(selectedItems.keyAt(i));
         }
 
         return items;
@@ -211,7 +211,17 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
 
     @Override
     public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-        mode.finish();
+        if (item.getItemId() == R.id.delete_selected) {
+            List<Integer> selectedItemPositions = getSelectedItemPositions();
+
+            for (int i = selectedItemPositions.size() - 1; i >= 0; i--) {
+                people.remove(selectedItemPositions.get(i));
+            }
+
+            mode.finish();
+            notifyDataSetChanged();
+        }
+
         return true;
     }
 
